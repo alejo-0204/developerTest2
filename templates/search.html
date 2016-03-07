@@ -1,0 +1,35 @@
+
+  <div id="container" class="container marketing">
+
+    <div id="body_content">
+      <h3>Search result</h3>
+      <div class='row'>
+        <div ng-repeat="actor in moviesByActor.results">
+          <div class='col-lg-4' ng-repeat="movie in actor.known_for">  
+            <img class='img-circle' ng-if="movie.poster_path == null" src="images/image_not_found.jpg" alt='{{movie.title}}' width='170' height='170' />  
+            <img class='img-circle' ng-if="movie.poster_path != null" ng-src="https://image.tmdb.org/t/p/w130/{{movie.poster_path}}" alt='{{movie.title}}' width='170' height='170' />    
+            <h3 class="ellipsis" ng-if="movie.media_type == 'tv'">{{movie.original_name}}</h3>
+            <h3 class="ellipsis" ng-if="movie.media_type == 'movie'">{{movie.title}}</h3>
+            <h3 class="ellipsis" ng-if="movie.media_type == null">{{movie.title}}</h3>  
+            <p> Votes Average: {{movie.vote_average}}</p>
+            <p><a class='btn btn-default' href="#/details/{{movie.id}}" role='button'>View details »</a></p>
+          </div>
+        </div>
+        <div class='col-lg-4' ng-repeat="movieRes in moviesResult.results">  
+          <img class='img-circle' ng-if="movieRes.poster_path == null" src="images/image_not_found.jpg" alt='{{movieRes.title}}' width='170' height='170' />        
+          <img class='img-circle' ng-if="movieRes.poster_path != null" ng-src="https://image.tmdb.org/t/p/w130/{{movieRes.poster_path}}" alt='{{movieRes.title}}' width='170' height='170' />    
+            <h3 class="ellipsis" ng-if="movieRes.media_type == 'tv'">{{movieRes.original_name}}</h3>
+            <h3 class="ellipsis" ng-if="movieRes.media_type == 'movie'">{{movieRes.title}}</h3>  
+            <h3 class="ellipsis" ng-if="movieRes.media_type == null">{{movieRes.title}}</h3>        
+          <p> Votes Average: {{movieRes.vote_average}}</p>
+          <p><a class='btn btn-default' href="#/details/{{movieRes.id}}" role='button'>View details »</a></p>
+        </div>
+      </div>
+
+      <p ng-show="moviesByActor.results.length <= 0 && moviesResult.results.length <= 0"><b>Sorry, no results found.</b></p>
+      <!-- FOOTER -->
+      <footer>
+        <p>Jorge Alejandro Narváez Giraldo · <a>alejo_0204@hotmail.es</a></p>
+      </footer>
+
+    </div><!-- /.container -->

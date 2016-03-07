@@ -1,0 +1,32 @@
+   
+  <div id="container-fluid" class="container marketing">
+
+    <div id="body_content">
+      <div class="col-md-5">
+        <img ng-if="MovieDetail.poster_path == null" src="images/image_not_found.jpg" alt='{{MovieDetail.title}}' width='170' height='170' />  
+        <img ng-if="MovieDetail.poster_path != null" ng-src="https://image.tmdb.org/t/p/w300/{{MovieDetail.poster_path}}" alt='{{MovieDetail.title}}' />    
+      </div>
+      <div class="col-md-7">
+        <h1 class="ellipsis" ng-if="MovieDetail.media_type == 'tv'">{{MovieDetail.original_name}}</h1>
+        <h1 class="ellipsis" ng-if="MovieDetail.media_type == 'movie'">{{MovieDetail.title}}</h1>
+        <h1 class="ellipsis" ng-if="MovieDetail.media_type == null">{{MovieDetail.title}}</h1> 
+
+        <h4>{{MovieDetail.overview}}</h4>
+        <p><b>Release Date:</b> {{MovieDetail.release_date}}</p>        
+        <p><b>Votes Average:</b> {{MovieDetail.vote_average}}</p> 
+        <p><b>Genre:</b> <div ng-repeat="genre in MovieDetail.genres">{{genre.name}}</div></p> 
+
+      </div>    
+
+    </div>
+    <div class="col-md-12 text-center" ng-repeat="video in VideoDetail.results">
+      <youtube-video video-id="video.key"></youtube-video>
+    </div>  
+    <div class="col-md-12">
+      <p ng-show="MovieDetail.length <= 0"><b>Sorry, no results found.</b></p>
+      <!-- FOOTER -->
+      <footer>
+        <p>Jorge Alejandro Narváez Giraldo · <a>alejo_0204@hotmail.es</a></p>
+      </footer>
+    </div>  
+    </div><!-- /.container -->

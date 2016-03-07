@@ -1,0 +1,23 @@
+	<div id="container" class="container marketing">
+
+	  <div id="body_content">
+      <h3>Movies in Theaters</h3>
+      <div class='row'>
+        <div class='col-lg-4' ng-repeat="slide in slides" >       
+          <img class='img-circle' ng-if="slide.poster_path == null" src="images/image_not_found.jpg" alt='{{slide.title}}' width='170' height='170' />        
+          <img class='img-circle' ng-if="slide.poster_path != null" ng-src="https://image.tmdb.org/t/p/w130/{{slide.poster_path}}" alt='{{movieRes.title}}' width='170' height='170' />  
+            <h3 class="ellipsis" ng-if="slide.media_type == 'tv'">{{slide.original_name}}</h3>
+            <h3 class="ellipsis" ng-if="slide.media_type == 'movie'">{{slide.title}}</h3>  
+            <h3 class="ellipsis" ng-if="slide.media_type == null">{{slide.title}}</h3>           
+          <p> Votes Average: {{slide.vote_average}}</p>
+          <p><a class='btn btn-default' href="#/details/{{slide.id}}" role='button'>View details »</a></p>
+        </div>
+      </div>
+	  </div>
+
+      <!-- FOOTER -->
+      <footer>
+        <p>Jorge Alejandro Narváez Giraldo · <a>alejo_0204@hotmail.es</a></p>
+      </footer>
+
+    </div><!-- /.container -->
